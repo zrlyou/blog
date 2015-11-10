@@ -13,6 +13,9 @@ body {
 	font:normal 100% Helvetica, Arial, sans-serif;
 	font-size:16px;
 }
+h1 {
+	font-size:1.5em;
+}
 .clear {
 	clear: both;
 }
@@ -43,7 +46,7 @@ body {
 	padding:0px 10px; 
 }
 .main {
-	margin-top:40px;
+	margin-top:3%;
 	background-position: center top;
 	background-repeat: no-repeat;
 	background-attachment: scroll;
@@ -59,10 +62,10 @@ body {
 	margin-right: auto;
 }
 .main-name {
-	margin-left: 5px;
+	margin-left: 1%;
 	width:40%;
 	height: auto;
-	padding-top:40px;
+	padding-top:3%;
 }
 .main-name h1 {
 	font-size: 2.5em;
@@ -91,7 +94,7 @@ body {
 }
 .main-left {
 	margin-top:1.5%;
-	width:25%;
+	width:23.5%;
 	float:left;
 	border:solid 1px #B0AD9C;
 	text-align:center;
