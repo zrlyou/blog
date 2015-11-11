@@ -106,6 +106,7 @@ h1 {
 }
 .myinfo-title span,.blog-list span  {
 	margin-left:3%;
+	font-size:1em;
 }
 .myinfo-name {
 	padding:3%;
