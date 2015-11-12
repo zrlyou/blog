@@ -4,7 +4,7 @@
  * 	
  * Author:zrlyou(zrlyouwin@gmail.com)
  */
-class DbMysqli{
+class DbMysqli {
 	//定义数据库服务器地址
 	private $dbHost;
 	//定义数据库的用户名
