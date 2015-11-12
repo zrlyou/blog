@@ -36,5 +36,27 @@ class DbMysqli{
 		//返回数据库连接
 		return $dblink;
 	}
-
+	//select方法，实现查询功能，返回值为一个关联数组
+	public function select($link,$sql){
+		$result = mysqli_query($link,$sql);
+		if (!$result) {
+			echo 'The record does not exist!';
+		} else {
+			$rows = mysqli_fetch_assoc($result);
+		}
+		mysqli_free_result($result);		//释放结果内存
+		return $rows;
+	}
+	//query方法，用于执行insert、update、delete语句，返回值为布尔值
+	public function query($link,$sql){
+		if (mysqli_query($link,$sql)){
+			return ture;
+		} else {
+			return false;
+		}
+	}
+	//关闭数据库连接
+	public function close($link){
+		mysqli_close($link);
+	}
 }
