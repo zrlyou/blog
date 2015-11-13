@@ -1,5 +1,4 @@
 <?php
-session_start();
 /**
  * 
  */
@@ -19,8 +18,9 @@ function checkUser($username,$password){
 	$pwd = md5(md5($password).'blog');
 	$user = new User();
 	if ($user->userAuthentication($username,$pwd)){
+		session_start();
 		$_SESSION['username'] = $username;
-		header("refresh:0;url=index.html");
+		header("Location:index.php");
 	} else {
 		echo "<script>alert('用户名或者密码错误!请重新输入!');</script>";
 		header("refresh:0;url=b_login.php");
@@ -32,8 +32,8 @@ if (!@$_POST['submit']){
 	header("refresh:3;url=b_login.php");
 } else {
 	if (empty($username)|| empty($password)){
-		echo '用户名或者密码为空!';
-		header("refresh:3;url=b_login.php");
+		echo "<script>alert('用户名或者密码为空!');</script>";
+		header("refresh:0;url=b_login.php");
 	} else{
 		checkUser($username,$password);
 	}
