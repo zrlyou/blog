@@ -2,7 +2,7 @@
 /**
  * User类，用于用户的验证以及修改相关信息
  * 
- * Author:zrlyou<zrlyou@gmail.com>
+ * Author:zrlyou<zrlyouwin@gmail.com>
  */
 //加载数据库操作类
 include('DbMysqli.class.php');
@@ -20,10 +20,9 @@ class User {
 	private $qq_zone;
 
 	//记录登陆时间和ip
-	public function recordLogintimeAndLoginip($db,$conn){
-		$logintime = time();
+	public function recordLogintimeAndLoginip($db,$conn,$username,$time){
 		$loginip   = $_SERVER['REMOTE_ADDR'];
-		$sql       = "insert into user(logintime,loginip) values('$logintime','$loginip')";
+		$sql       = "update user set logintime=$time,loginip='$loginip' where username='$username'";
 		$db->query($conn,$sql);
 	}
 
@@ -41,13 +40,14 @@ class User {
 			if (!$user || $password!=$user['password']){
 				return false;
 			} else {
+				$time =time();
 				@session_start();
 				//设置上次登陆时间
-				$_SESSION['last_logintime'] = $user['logintime']>0 ? date("Y-m-d H:i:s",$user['logintime']) : date("Y-m-d H:i:s",time());
+				$_SESSION['last_logintime'] = $user['logintime']>0 ? date("Y-m-d H:i:s",$user['logintime']) : date("Y-m-d H:i:s",$time);
 				//设置上次登陆ip
-				$_SESSION['last_loginip']   = $user['loginip']!=$_SERVER['REMOTE_ADDR'] ? $_SERVER['REMOTE_ADDR'] : $user['loginip'];
+				$_SESSION['last_loginip']   = $user['loginip']!='0' ? $_SERVER['REMOTE_ADDR'] : $user['loginip'];
 
-				$this->recordLogintimeAndLoginip($db,$conn);
+				$this->recordLogintimeAndLoginip($db,$conn,$user['username'],$time);
 				return true;
 			}
 		}
