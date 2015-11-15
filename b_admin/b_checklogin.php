@@ -12,6 +12,9 @@ require('../include/User.class.php');
 @$username = trim($_POST['username']);
 @$password = trim($_POST['password']);
 
+//防SQL注入
+@$username = addslashes($username);
+@$password = addslashes($password);
 //用户验证
 function checkUser($username,$password){
 	//对密码进行两次md5加密
@@ -23,7 +26,7 @@ function checkUser($username,$password){
 		header("Location:index.php");
 	} else {
 		echo "<script>alert('用户名或者密码错误!请重新输入!');</script>";
-		header("refresh:0;url=b_login.php");
+		header('refresh:0;url=b_login.php');
 	}
 }
 

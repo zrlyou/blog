@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0" charset="UTF-8">
-	<title>后台登录页面</title>
+	<title>后台登录</title>
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>
