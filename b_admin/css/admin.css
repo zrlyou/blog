@@ -112,3 +112,27 @@ a{
 	height: 100%;
 	border: none;
 }
+.column-title {
+	margin-left: 2%;
+	margin-bottom: 1%;
+}
+.showform {
+	margin-left:2%;
+}
+.control-tr {
+	line-height:52px;
+}
+.control-td {
+	width:10%;
+	text-align: center;
+}
+.column-name {
+	margin-top:5%;
+}
+.input-width {
+	width:30%;
+}
+.control-btn {
+	margin-left:5%;
+	width:10%;
+}

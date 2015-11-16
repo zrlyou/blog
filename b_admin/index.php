@@ -30,24 +30,18 @@ if (@$_GET['action'] == 'logout'){
 <div class="left">
 	<ul>
 		<li>
-			<a class="a_list a_list1">新闻相关</a>
+			<a class="a_list a_list1">博文相关</a>
 			<div class="menu_list" style="display:none;">
-				<a class="lista_first" href="#" target="iframe">新闻列表</a>
-				<a href="#" target="iframe">添加新闻</a>
+				<a class="lista_first" href="b_bowenlist.php" target="iframe">博文列表</a>
+				<a href="b_addbowen.php" target="iframe">添加博文</a>
 			</div>
 		</li>
 		<li>
-			<a class="a_list a_list2">栏目相关</a>
-			<div class="menu_list" style="display:none;">
-				<a class="lista_first" href="#" target="iframe">栏目列表</a>
-				<a href="#" target="iframe">添加栏目</a>
-			</div>
-		</li>
 		<li>
-			<a class="a_list a_list3">管理员相关</a>
+			<a class="a_list a_list2">个人信息</a>
 			<div class="menu_list" style="display:none;">
-				<a class="lista_first" href="#" target="iframe">管理员列表</a>
-				<a href="#" target="iframe">添加管理员</a>
+				<a class="lista_first" href="b_changeinfo.php" target="iframe">信息修改</a>
+				<a href="b_changepwd.php" target="iframe">修改密码</a>
 			</div>
 		</li>
 	</ul>

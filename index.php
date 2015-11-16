@@ -211,7 +211,7 @@ less：支持前后翻滚，既可以向上翻页（pageup按键），也可以�
 <!-- footer start-->
 <div class="footer">
 	<div class="copyright">
-		<span>Copyright &nbsp&nbsp By &nbsp&nbsp zrlyou &nbsp&nbsp 版权所有</span>
+		<span>Copyright &nbsp By &nbspzrlyou &nbsp 版权所有</span>
 	</div>
 </div>
 <!-- footer end -->
