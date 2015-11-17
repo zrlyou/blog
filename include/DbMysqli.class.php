@@ -50,7 +50,7 @@ class DbMysqli {
 	//query方法，用于执行insert、update、delete语句，返回值为布尔值
 	public function query($link,$sql){
 		if (mysqli_query($link,$sql)){
-			return ture;
+			return true;
 		} else {
 			return false;
 		}
