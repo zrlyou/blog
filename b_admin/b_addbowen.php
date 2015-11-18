@@ -31,7 +31,7 @@ if (!isset($_SESSION['username'])){
 	<table class="table table-bordered">
 		<tr class="control-tr">		
 			<td class="control-td"><label class="column-name">标题<span style="color: red;">*</span>:</label></td>
-			<td><input type="text" name="oldpwd" class="input-width form-control"></td>
+			<td><input type="text" name="title" class="input-width form-control"></td>
 		</tr>
 		<tr class="control-tr">		
 			<td class="control-td"><label class="column-name">内容<span style="color: red;">*</span>:</label></td>
@@ -40,8 +40,37 @@ if (!isset($_SESSION['username'])){
 			</td>
 		</tr>
 	</table>
-	<div><input type="button" class="control-btn btn btn-primary" value="提交"> <input type="reset" class="control-btn btn btn-primary" value="重置"></div>
+	<div>
+		<input type="submit" name="submit" class="control-btn btn btn-primary" value="提交"> 
+		<input type="reset" class="control-btn btn btn-primary" value="重置">
+	</div>
 </form>
 </div>
 </body>
 </html>
+<?php
+//去除两边的空格
+@$title   = trim($_POST['title']);
+@$content = trim($_POST['content']);
+
+
+if (@$_POST['submit']){
+	if (empty($title) || empty($content)){
+		echo "<script>alert('请确认信息是否完整!');history.back();</script>";
+	} else {
+		//获取当前时间戳，记录博文发表时间
+		$time = time();
+		//引入Blog类
+		include('../include/Blog.class.php');
+		//实例化Blog类的对象
+		$blog   = new Blog();
+		//调用Blog类的addBowenForBlog方法，用于插入数据
+		$result = $blog->addBowenForBlog($title,$time,$content);
+		//调用成功后，输出返回的信息
+		if ($result){			
+			echo $result;
+		}
+	}
+}
+
+?>

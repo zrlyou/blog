@@ -3,26 +3,6 @@ session_start();
 if (!isset($_SESSION['username'])){
 	header("Location:b_login.php");
 }
-//去掉两边的空格
-@$oldpwd = trim($_POST['oldpwd']);
-@$newpwd = trim($_POST['newpwd']);
-
-if (@$_POST['submit']){
-	if (empty($oldpwd) || empty($newpwd)){
-		echo "<script>alert('请确定信息是否完整!');history.back();</script>";
-	}
-	//引入User类
-	include('../include/User.class.php');
-	//获取修改密码的用户名
-	$username = $_SESSION['username'];
-	$oldpwd = md5(md5($oldpwd).'blog');
-	$newpwd = md5(md5($newpwd).'blog');
-	$user = new User();
-	$result = $user->savePwdForUser($username,$oldpwd,$newpwd);
-	if ($result){
-		echo $result;
-	} 
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,3 +40,25 @@ if (@$_POST['submit']){
 </div>
 </body>
 </html>
+<?php
+//去掉两边的空格
+@$oldpwd = trim($_POST['oldpwd']);
+@$newpwd = trim($_POST['newpwd']);
+
+if (@$_POST['submit']){
+	if (empty($oldpwd) || empty($newpwd)){
+		echo "<script>alert('请确定信息是否完整!');history.back();</script>";
+	}
+	//引入User类
+	include('../include/User.class.php');
+	//获取修改密码的用户名
+	$username = $_SESSION['username'];
+	$oldpwd = md5(md5($oldpwd).'blog');
+	$newpwd = md5(md5($newpwd).'blog');
+	$user = new User();
+	$result = $user->savePwdForUser($username,$oldpwd,$newpwd);
+	if ($result){
+		echo $result;
+	} 
+}
+?>

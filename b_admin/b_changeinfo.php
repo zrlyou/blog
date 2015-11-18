@@ -7,33 +7,6 @@ include('../include/User.class.php');
 
 $user = new User();
 $info = $user->getUserInfo();
-
-//去除两边的空格
-@$uid       = intval($_POST['uid']);
-@$username  = trim($_POST['username']);
-@$signature = trim($_POST['signature']);
-@$weibo     = trim($_POST['weibo']);
-@$qq_zone   = trim($_POST['qq_zone']);
-//防止SQL注入
-$username  = addslashes($username);
-$signature = addslashes($signature);
-$weibo     = addslashes($weibo);
-$qq_zone   = addslashes($qq_zone);
-
-if (@$_POST['submit']){
-	if (empty($username) || empty($signature) || empty($weibo) || empty($qq_zone)){
-		echo "<script>alert('请确定信息是否完整!');</script>";
-		echo "<script>history.back();</script>";
-	} else{
-		$result = $user->saveChangeForUser($uid,$username,$signature,$weibo,$qq_zone);
-		if ($result){
-			echo "<script>alert('修改成功!');history.back();</script>";
-		} else {
-			echo "<script>alert('修改失败!');history.back();</script>";
-		}
-	}
-
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -76,3 +49,30 @@ if (@$_POST['submit']){
 </div>
 </body>
 </html>
+<?php
+//去除两边的空格
+@$uid       = intval($_POST['uid']);
+@$username  = trim($_POST['username']);
+@$signature = trim($_POST['signature']);
+@$weibo     = trim($_POST['weibo']);
+@$qq_zone   = trim($_POST['qq_zone']);
+//防止SQL注入
+$username  = addslashes($username);
+$signature = addslashes($signature);
+$weibo     = addslashes($weibo);
+$qq_zone   = addslashes($qq_zone);
+
+if (@$_POST['submit']){
+	if (empty($username) || empty($signature) || empty($weibo) || empty($qq_zone)){
+		echo "<script>alert('请确定信息是否完整!');history.back();</script>";
+	} else{
+		$result = $user->saveChangeForUser($uid,$username,$signature,$weibo,$qq_zone);
+		if ($result){
+			echo "<script>alert('修改成功!');history.back();</script>";
+		} else {
+			echo "<script>alert('修改失败!');history.back();</script>";
+		}
+	}
+
+}
+?>

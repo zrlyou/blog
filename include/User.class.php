@@ -8,8 +8,8 @@
 include('DbMysqli.class.php');
 
 class User {
-	//建立数据库连接
-	public function dbConnectForUser(){
+	//初始化数据库类
+	private function dbConnectForUser(){
 		//加载配置文件
 		include('../conf/config.php');
 		//实例化DbMysqli对象

@@ -14,7 +14,7 @@ create table user(
 insert into user(username,password,signature,weibo,qq_zone,logintime,loginip) 
 values('zrlyou','d293adef0d0b5f999626a5f92dafb2ee','程序员一个','http://weibo.com/u/2337162545?c=spr_web_sq_5566_weibo_t001','http://user.qzone.qq.com/641678116',0,'0');
 create table blog(
-	bid int unsigned not null primary key,
+	bid int unsigned not null primary key auto_increment,
 	title varchar(100) not null default '',
 	time int(10) unsigned not null default 0,
 	content text
