@@ -37,6 +37,38 @@ class Blog {
 		//关掉数据库连接
 		$db->close($conn);
 	}
+	//保存编辑后的博文
+	public function saveBowenForBlog($bid,$title,$content){
+		//获取连接数据库的一个对象
+		$db = $this->dbConnectForBolg();
+		//连接数据库
+		$conn = $db->connect();
+		//连接成功后，开始查询操作
+		if ($conn){
+			$sql = "update blog set title='$title',content='$content' where bid=$bid";
+			if ($db->query($conn,$sql)){
+				return "<script>alert('编辑成功!');location.href='b_addbowen.php'</script>";
+			} else {
+				return "<script>alert('编辑失败!');history.back();</script>";
+			}
+		}
+	}
+	//删除某篇博文
+	public function deleteBowenForBlog($bid){
+		//获取连接数据库的一个对象
+		$db = $this->dbConnectForBolg();
+		//连接数据库
+		$conn = $db->connect();
+		//连接成功后，开始删除操作
+		if ($conn){
+			$sql = "delete from blog where bid=$bid";
+			if ($db->query($conn,$sql)){
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
 	//显示博文列表
 	public function showListForBlog(){
 		//获取连接数据库的一个对象
@@ -45,10 +77,25 @@ class Blog {
 		$conn = $db->connect();
 		//连接成功后，开始查询操作
 		if ($conn) {
-			$sql = "select * from blog";
+			$sql = "select * from blog order by time desc";
 			$blogs = $db->selectAll($conn,$sql);
 			if ($blogs){
 				return $blogs;
+			}
+		}
+		$db->close($conn);
+	}
+	//显示某篇博文具体信息
+	public function showContentForBlog($bid){
+		//获取数据库的一个对象
+		$db = $this->dbConnectForBolg();
+		//连接数据库
+		$conn = $db->connect();
+		if ($conn){
+			$sql = "select title,content from blog where bid=$bid";
+			$blog = $db->select($conn,$sql);
+			if ($blog){
+				return $blog;
 			}
 		}
 		$db->close($conn);
