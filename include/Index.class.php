@@ -44,4 +44,23 @@ class Index {
 		}
 		$db->close($conn);
 	}
+	//获取某一篇博文
+	public function getBowenToIndex($bid){
+		// 获取连接数据库的一个对象
+		$db   = $this->dbConnectForIndex();
+		//连接数据库
+		$conn = $db->connect();
+		//防止SQL注入
+		$bid  = mysqli_real_escape_string($conn,$bid);
+		if ($conn){
+			$sql = "select title,time,content from blog where bid=$bid";
+			$bowen = $db->select($conn,$sql);
+			if ($bowen){
+				return $bowen;
+			} else {
+				return false;
+			}
+		}
+
+	}
 }

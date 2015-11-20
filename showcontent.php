@@ -1,12 +1,15 @@
 <?php
-//设置网站路径
 define('ROOT_PATH',dirname(__FILE__));
 //引入首页类
 include ROOT_PATH.'/include/Index.class.php';
-$index     = new Index();
+$bid = trim($_GET['bid']);
+if (!$bid) echo "<script>alert('参数错误!');history.back();</script>";
+$index = new Index();
+$bowen = $index->getBowenToIndex($bid);
 $userinfo = $index->getUserInfoToIndex();
 $bloginfo = $index->getBowenListToIndex();
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +42,7 @@ $bloginfo = $index->getBowenListToIndex();
 			<span><?php echo $userinfo['signature'];?></span>
 		</div>
 		<div class="main-nav">
-			<a href="#">首页</a>
+			<a href="index.php">首页</a>
 			<a href="#">关于我</a>
 		</div>
 		<div class="main-left">
@@ -75,13 +78,13 @@ $bloginfo = $index->getBowenListToIndex();
 		</div>
 		<div class="main-right">
 			<div class="blog-title">
-				<h1><?php echo $bloginfo[0]['title'];?></h1>
+				<h1><?php echo $bowen['title'];?></h1>
 			</div>
 			<div class="blog-time">	
-				<span>发布时间:<?php echo date("Y-m-d H:i:s",$bloginfo[0]['time']);?></span>
+				<span>发布时间:<?php echo date("Y-m-d H:i:s",$bowen['time']);?></span>
 			</div>
 			<div class="blog-content">
-				<?php echo $bloginfo[0]['content'];?>
+				<?php echo $bowen['content'];?>
 			</div>
 		</div>
 	</div>
