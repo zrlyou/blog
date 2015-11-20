@@ -39,7 +39,7 @@ $bloginfo = $index->getBowenListToIndex();
 			<span><?php echo $userinfo['signature'];?></span>
 		</div>
 		<div class="main-nav">
-			<a href="#">首页</a>
+			<a href="index.php">首页</a>
 			<a href="#">关于我</a>
 		</div>
 		<div class="main-left">

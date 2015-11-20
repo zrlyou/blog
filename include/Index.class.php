@@ -1,13 +1,18 @@
 <?php
-include ROOT_PATH.'/include/DbMysqli.class.php';
+header('Content-Type:text/html;charset=utf-8');
+include('DbMysqli.class.php');
 class Index {
 	//初始化数据库,返回数据库的一个对象
-	private function dbConnectForIndex(){
+	public function dbConnectForIndex(){
 		//加载数据库配置文件
 		include ROOT_PATH.'/conf/config.php';
 		//实例化数据库类对象
 		$db = new DbMysqli($config['DB_HOST'],$config['DB_USER'],$config['DB_PWD'],$config['DB_NAME'],$config['DB_PORT']);
+		if ($db){
 			return $db;
+		} else {
+			echo '初始化数据库失败!';
+		}
 	}
 	//获取用户的相关信息
 	public function getUserInfoToIndex(){
