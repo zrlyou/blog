@@ -28,7 +28,7 @@ class DbMysqli {
 	//数据库连接方法，返回数据库的一个连接
 	public function connect(){
 		$dblink = mysqli_connect($this->dbHost,$this->dbUsername,$this->dbPassword,$this->dbName,$this->dbPort);
-		if (mysqli_connect_errno()){
+		if (mysqli_connect_errno() || !$dblink){
 			die('Connect error:'.mysqli_connect_error());
 		}
 		//设置字符编码为utf8
