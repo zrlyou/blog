@@ -60,7 +60,8 @@ class Index {
 		//连接数据库
 		$conn = $db->connect();
 		//防止SQL注入
-		$bid  = mysqli_real_escape_string($conn,$bid);
+		$bid = intval($bid);
+		$bid = mysqli_real_escape_string($conn,$bid);
 		if ($conn){
 			$sql = "select title,time,content from blog where bid=$bid";
 			$bowen = $db->select($conn,$sql);
