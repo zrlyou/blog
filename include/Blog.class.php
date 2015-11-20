@@ -7,7 +7,7 @@
  * 
  */
 //加载数据库操作类
-include('../include/DbMysqli.class.php');
+include('DbMysqli.class.php');
 
 class Blog {
 	//初始化数据库,返回数据库的一个对象

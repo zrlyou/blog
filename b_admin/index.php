@@ -15,8 +15,6 @@ if (@$_GET['action'] == 'logout'){
 	<meta name="viewport" content="width=device-width,initial-scale=1.0" charset="UTF-8">
 	<title>后台首页</title>
 	<link rel="stylesheet" type="text/css" href="css/admin.css">
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/admin.js"></script>
 </head>
 <body>
 <div class="top">
@@ -49,5 +47,7 @@ if (@$_GET['action'] == 'logout'){
 <div class="right">
 	<iframe name="iframe" src=""></iframe>
 </div>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/admin.js"></script>
 </body>
 </html>

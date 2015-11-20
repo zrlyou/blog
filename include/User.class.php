@@ -57,8 +57,8 @@ class User {
 	//获取用户相关信息,返回一个关联数组
 	public function getUserInfo(){
 		$db       = $this->dbConnectForUser();
-		//获取当前登录用户名
-		$username = $_SESSION['username'];
+			//获取当前登录用户名
+		@$username = $_SESSION['username'];
 		//连接数据库
 		$conn     = $db->connect();
 		if ($conn){				//连接成功后开始查询的操作
