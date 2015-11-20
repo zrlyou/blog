@@ -7,7 +7,7 @@ class Index {
 		include ROOT_PATH.'/conf/config.php';
 		//实例化数据库类对象
 		$db = new DbMysqli($config['DB_HOST'],$config['DB_USER'],$config['DB_PWD'],$config['DB_NAME'],$config['DB_PORT']);
-		return $db;
+			return $db;
 	}
 	//获取用户的相关信息
 	public function getUserInfoToIndex(){
@@ -23,6 +23,8 @@ class Index {
 				//返回数组
 				return $user;
 			}
+		} else {
+			echo 'DB connect is error!';
 		}
 		//关闭数据库连接
 		$db->close($conn);
@@ -41,6 +43,8 @@ class Index {
 			} else {
 				return false;
 			}
+		} else {
+			echo 'DB connect is error!';
 		}
 		$db->close($conn);
 	}
@@ -60,7 +64,14 @@ class Index {
 			} else {
 				return false;
 			}
+		} else {
+			echo 'DB connect is error!';
 		}
-
+		$db->close($conn);
+	}
+	public function test(){
+		echo ROOT_PATH;
+		include ROOT_PATH.'/conf/config.php';
+		print_r($config);
 	}
 }
