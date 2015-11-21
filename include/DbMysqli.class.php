@@ -27,40 +27,43 @@ class DbMysqli {
 
 	//数据库连接方法，返回数据库的一个连接
 	public function connect(){
-		$dblink = mysqli_connect($this->dbHost,$this->dbUsername,$this->dbPassword,$this->dbName,$this->dbPort);
-		if (mysqli_connect_errno() || !$dblink){
-			die('Connect error:'.mysqli_connect_error());
+		$dblink = new mysqli($this->dbHost,$this->dbUsername,$this->dbPassword,$this->dbName,$this->dbPort);
+		if ($dblink->connect_error || !$dblink){
+			die("Connection failed: " . $dblink->connect_error);
 		}
 		//设置字符编码为utf8
-		mysqli_query($dblink,"SET NAMES utf8");
+		$dblink->set_charset('utf8');
 		//返回数据库连接
 		return $dblink;
 	}
 	//select方法，查询一行数据，返回值为一个关联数组
 	public function select($link,$sql){
-		$result = mysqli_query($link,$sql);
-		if (!$result) {
+		$result = $link->query($sql);
+		if ($result->num_rows<0) {
 			echo 'The record does not exist!';
 		} else {
-			$rows = mysqli_fetch_assoc($result);
+			$rows = $result->fetch_assoc();
 		}
-		mysqli_free_result($result);		//释放结果内存
+		$result->close();		//释放结果内存
 		return $rows;
 	}
 	//selectAll方法，查询所有数据，返回一个关联数组
 	public function selectAll($link,$sql){
-		$result = mysqli_query($link,$sql);
-		if (!$result){
+		$result = $link->query($sql);
+		$row    = array();
+		if ($result->num_rows<0){
 			echo 'The record does not exist!';
 		} else {
-			$rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+			for ($i=0;$i<$result->num_rows;$i++){
+				$rows[$i] = $result->fetch_assoc();
+			}	
 		}
-		mysqli_free_result($result);
+		$result->close();		//释放结果内存
 		return $rows;
 	}
 	//query方法，用于执行insert、update、delete语句，返回值为布尔值
 	public function query($link,$sql){
-		if (mysqli_query($link,$sql)){
+		if ($link->query($sql) === true){
 			return true;
 		} else {
 			return false;
@@ -68,6 +71,6 @@ class DbMysqli {
 	}
 	//关闭数据库连接
 	public function close($link){
-		mysqli_close($link);
+		$link->close();
 	}
 }

@@ -41,12 +41,12 @@ class Index {
 		//连接数据库
 		$conn = $db->connect();
 		if ($conn){
-			$sql = "select bid,title,time,content from blog order by time desc";
+			$sql = "select bid,title,time,content from blog order by time desc limit 6";
 			$bloginfo = $db->selectAll($conn,$sql);
 			if ($bloginfo){
 				return $bloginfo;
 			} else {
-				return false;
+				echo '没有数据...';
 			}
 		} else {
 			echo 'DB connect is error!';
@@ -74,10 +74,5 @@ class Index {
 			echo 'DB connect is error!';
 		}
 		$db->close($conn);
-	}
-	public function test(){
-		echo ROOT_PATH;
-		include ROOT_PATH.'/conf/config.php';
-		print_r($config);
 	}
 }
