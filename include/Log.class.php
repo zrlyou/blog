@@ -8,25 +8,9 @@
  * 
  */
 //加载数据库类
-include('../include/DbMysqli.class.php');
+include_once('../include/DbMysqli.class.php');
 
-class Blog {
-	//登录的用户
-	private $username;
-	//登录的ip
-	private $loginip;
-	//登录的时间
-	private $logintime;
-	//登录的状态
-	private $status;
-
-	//构造方法，用于初始化登录的相关信息
-	public function __construct($username,$loginip,$logintime,$status){
-		$this->username  = $username;
-		$this->loginip   = $loginip;
-		$this->logintime = $logintime;
-		$this->status    = $status;
-	}
+class Log {
 
 	//初始化数据库的相关信息 返回数据库的一个对象
 	private function dbConnectForLog(){
@@ -42,7 +26,7 @@ class Blog {
 	}
 
 	//recordLogForLogin方法，用于记录用户的登录行为
-	public function recordLogForLogin(){
+	public function recordLogForLogin($username,$loginip,$logintime,$status){
 		//获取数据库的一个对象
 		$db = $this->dbConnectForLog();
 		//连接数据库
@@ -50,7 +34,7 @@ class Blog {
 
 		if ($conn){					//数据库连接成功，则进行记录操作
 			//定义记录登录信息的SQL语句
-			$sql = "insert into log(username,loginip,logintime,status) values('$this->username','$this->loginip',$this->logintime,$this->status)";
+			$sql = "insert into log(username,loginip,logintime,status) values('$username','$loginip',$logintime,$status)";
 			//执行记录的操作
 			if ($db->query($conn,$sql)){
 				return true;
@@ -69,10 +53,10 @@ class Blog {
 
 		if ($conn){			//数据库连接成功，开始读取数据
 			//按照时间顺序倒序读取数据
-			$sql = "select lid,username,loginip,logintime,status from log order by time desc";
+			$sql = "select lid,username,loginip,logintime,status from log order by logintime desc";
 			$result = $db->selectAll($conn,$sql);
 			if ($result){
-				return $return;
+				return $result;
 			} else {
 				exit('No data!');
 			}

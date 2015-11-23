@@ -6,8 +6,7 @@
 header('Content-Type:text/html;charset=utf-8');
 //引入User类 
 require('../include/User.class.php');
-//引入Log类
-require('../include/Log.class.php');
+
 
 //去除两边的空格
 @$username = trim($_POST['username']);
@@ -18,10 +17,11 @@ require('../include/Log.class.php');
 @$password = addslashes($password);
 //记录登录信息
 function recordLogin($username,$status){
+	include('../include/Log.class.php');
 	$loginip = $_SERVER['REMOTE_ADDR'];
 	$logintime = time();
-	$log = new Log($username,$loginip,$logintime,$status);
-	$log->recordLogForLogin();
+	$log = new Log();
+	$log->recordLogForLogin($username,$loginip,$logintime,$status);
 }
 //用户验证
 function checkUser($username,$password){

@@ -45,7 +45,7 @@ if (@$_GET['action'] == 'logout'){
 	</ul>
 </div>
 <div class="right">
-	<iframe name="iframe" src=""></iframe>
+	<iframe name="iframe" src="b_showlog.php"></iframe>
 </div>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/admin.js"></script>
