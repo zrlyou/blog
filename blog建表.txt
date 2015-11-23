@@ -19,3 +19,11 @@ create table blog(
 	time int(10) unsigned not null default 0,
 	content text
 	) engine myisam auto_increment=100 default charset utf8;
+
+create table log(
+	lid int unsigned not null primary key auto_increment,
+	username varchar(50) not null default '',
+	loginip varchar(20) not null default '',
+	logintime int(10) unsigned not null default 0,
+	status tinyint(1) unsigned not null default 0
+	) engine myisam default charset utf8;
