@@ -21,7 +21,7 @@ if (@$_GET['action'] == 'logout'){
 	<span>后台管理系统</span>
 	<div class="top-right">
 		<p>上次登录时间:<?php echo $_SESSION['last_logintime'];?> &nbsp&nbsp  上次登录ip:<?php echo $_SESSION['last_loginip'];?></p>
-		<span>您好！<?php echo $_SESSION['username'];?></span>
+		<span>您好!<?php echo $_SESSION['username'];?></span>
 		<span><a href="index.php?action=logout">注销</a></span>
 	</div>
 </div>
