@@ -4,9 +4,10 @@
  */
 ////设置文件编码为utf-8
 header('Content-Type:text/html;charset=utf-8');
-//引用数据库类
-// include('../include/DbMysqli.class.php');
+//引入User类 
 require('../include/User.class.php');
+//引入Log类
+require('../include/Log.class.php');
 
 //去除两边的空格
 @$username = trim($_POST['username']);
