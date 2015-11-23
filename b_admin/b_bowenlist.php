@@ -11,16 +11,6 @@ if (!isset($_SESSION['username'])){
 	<title>博文列表</title>
 	<link rel="stylesheet" type="text/css" href="css/admin.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<script type="text/javascript">
-   	 window.UEDITOR_HOME_URL='ueditor/';
-   	 window.onload=function (){
-        window.UEDITOR_CONFIG.initialFrameWidth=960;
-        window.UEDITOR_CONFIG.initialFrameHeight=350;
-        UE.getEditor('content');
-    }
-    </script>
-    <script type="text/javascript" src="ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" src="ueditor/ueditor.all.min.js"></script>
 </head>
 <body>
 <div class="column-title">
