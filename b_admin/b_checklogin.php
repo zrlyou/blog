@@ -16,6 +16,13 @@ require('../include/Log.class.php');
 //防SQL注入
 @$username = addslashes($username);
 @$password = addslashes($password);
+//记录登录信息
+function recordLogin($username,$status){
+	$loginip = $_SERVER['REMOTE_ADDR'];
+	$logintime = time();
+	$log = new Log($username,$loginip,$logintime,$status);
+	$log->recordLogForLogin();
+}
 //用户验证
 function checkUser($username,$password){
 	//对密码进行两次md5加密
@@ -24,8 +31,10 @@ function checkUser($username,$password){
 	if ($user->userAuthentication($username,$pwd)){
 		session_start();
 		$_SESSION['username'] = $username;
+		recordLogin($username,1);
 		header("Location:index.php");
 	} else {
+		recordLogin($username,0);
 		echo "<script>alert('用户名或者密码错误!请重新输入!');</script>";
 		header('refresh:0;url=b_login.php');
 	}

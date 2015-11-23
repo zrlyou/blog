@@ -22,10 +22,10 @@ class Blog {
 
 	//构造方法，用于初始化登录的相关信息
 	public function __construct($username,$loginip,$logintime,$status){
-		$this->username = $username;
-		$this->loginip = $loginip;
+		$this->username  = $username;
+		$this->loginip   = $loginip;
 		$this->logintime = $logintime;
-		$this->status = $status;
+		$this->status    = $status;
 	}
 
 	//初始化数据库的相关信息 返回数据库的一个对象

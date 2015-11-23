@@ -26,4 +26,4 @@ create table log(
 	loginip varchar(20) not null default '',
 	logintime int(10) unsigned not null default 0,
 	status tinyint(1) unsigned not null default 0
-	) engine myisam default charset utf8;
+	) engine myisam auto_increment=1000 default charset utf8;
