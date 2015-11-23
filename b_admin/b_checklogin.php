@@ -31,12 +31,12 @@ function checkUser($username,$password){
 	if ($user->userAuthentication($username,$pwd)){
 		session_start();
 		$_SESSION['username'] = $username;
-		recordLogin($username,1);
 		header("Location:index.php");
+		recordLogin($username,1);
 	} else {
-		recordLogin($username,0);
 		echo "<script>alert('用户名或者密码错误!请重新输入!');</script>";
 		header('refresh:0;url=b_login.php');
+		recordLogin($username,0);
 	}
 }
 
