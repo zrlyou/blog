@@ -11,10 +11,10 @@ ul, li {
 body {
 	background:url(../images/body_bg.jpg) repeat;
 	font:normal 100% Helvetica, Arial, sans-serif;
-	font-size:16px;
+	/*font-size:16px;*/
 }
 h1 {
-	font-size:1.5em;
+	font-size:1.5rem;
 }
 .clear {
 	clear: both;
@@ -68,14 +68,14 @@ h1 {
 	padding-top:3%;
 }
 .main-name h1 {
-	font-size: 2.5em;
+	font-size: 2.5rem;
 	margin-top: 20px;
 	color: #2b2927; 
 }
 .main-name span {
 	display:block;
 	margin-top: 20px;
-	font-size: 0.875em;
+	font-size: 0.875rem;
 }
 .main-nav {
 	padding-left:20px;
@@ -94,7 +94,7 @@ h1 {
 }
 .main-left {
 	margin-top:1.5%;
-	width:23.5%;
+	width:24.8%;
 	float:left;
 	border:solid 1px #B0AD9C;
 	text-align:center;
@@ -106,7 +106,7 @@ h1 {
 }
 .myinfo-title span,.blog-list span  {
 	margin-left:3%;
-	font-size:1em;
+	font-size:1rem;
 }
 .myinfo-name {
 	padding:3%;
@@ -129,14 +129,14 @@ h1 {
 }
 .blog-list-content a {
 	margin-left: 8%;
-	font-size:0.875em;
+	font-size:0.875rem;
 	color:#2b2927;
 }
 .main-right {
 	float:left;
 	margin-top:1.5%;
 	margin-left:1.5%;
-	width:73%;
+	width:73.2%;
 	border:solid 1px #B0AD9C;
 }
 .blog-title {
@@ -158,11 +158,11 @@ h1 {
 .blog-content {
 	width:95%;
 	margin:5% auto;
-	text-indent: 2em;
+	text-indent: 2rem;
 }
 .blog-content p{
 	width:100%;
-	line-height:1.8em;
+	line-height:1.8rem;
 }
 .footer {
 	width:100%;
