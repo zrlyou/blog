@@ -18,3 +18,20 @@ function checkVarIsNull(obj,str,id){
 		document.getElementById(id).innerHTML = '';
 	}
 }
+
+function checkPwd(obj){
+	if (obj.value==''){
+		document.getElementById("cp_error").innerHTML = "确认密码不能为空!";
+		obj.focus();
+	} else {
+		var pwd = document.getElementById("newpwd");
+		if (obj.value!=pwd.value){
+			document.getElementById("cp_error").innerHTML = "两次输入的密码不一致!请重新输入";
+			pwd.innerHTML = '';
+			obj.innerHTML = '';
+			obj.focus();
+		} else {
+			document.getElementById("cp_error").innerHTML = '';
+		}
+	}
+}

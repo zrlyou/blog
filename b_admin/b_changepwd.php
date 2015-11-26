@@ -23,21 +23,21 @@ if (!isset($_SESSION['username'])){
 		<tr class="control-tr">		
 			<td class="control-td"><label class="column-name">旧密码<span style="color: red;">*</span>:</label></td>
 			<td>
-				<input type="password" name="oldpwd" class="input-width form-control" onblur="checkVarIsNull(this,'旧密码为不能空!','t_error')">
+				<input type="password" name="oldpwd" class="input-width form-control" onblur="checkVarIsNull(this,'旧密码为不能空!','op_error')">
 				<div id="op_error"></div>
 			</td>
 		</tr>
 		<tr class="control-tr">		
 			<td class="control-td"><label class="column-name">新密码<span style="color: red;">*</span>:</label></td>
 			<td>
-				<input type="password" name="newpwd" class="input-width form-control" onblur="checkVarIsNull(this,'新密码为不能空!','t_error')">
+				<input type="password" name="newpwd" id="newpwd" class="input-width form-control" onblur="checkVarIsNull(this,'新密码为不能空!','np_error')">
 				<div id="np_error"></div>
 			</td>
 		</tr>
 		<tr class="control-tr">		
 			<td class="control-td"><label class="column-name">确认密码<span style="color: red;">*</span>:</label></td>
 			<td>
-				<input type="password" name="checkpwd" class="input-width form-control" onblur="checkPwd()">
+				<input type="password" name="checkpwd" class="input-width form-control" onblur="checkPwd(this)">
 				<div id="cp_error"></div>
 			</td>
 		</tr>

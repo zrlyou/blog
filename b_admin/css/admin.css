@@ -140,7 +140,7 @@ a{
 .control-a {
 	margin-left:5%;
 }
-#t_error,#u_error,#s_error,#w_error,#q_error {
+#t_error,#u_error,#s_error,#w_error,#q_error,#op_error,#np_error,#cp_error {
 	margin-left:1%;
 	line-height: 34px;
 	float:left;
