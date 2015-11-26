@@ -11,9 +11,9 @@ $bloginfo = $index->getBowenListToIndex();
 <html>
 <head>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0" charset="UTF-8">
-	<title>我的博客</title>
-	<meta name="description" content="zrlyou,zrlyou的博客,我的博客" />
-	<meta name="keywords" content="zrlyou,zrlyou的博客,我的博客,个人博客" />
+	<title>zrlyou的博客</title>
+	<meta name="description" content="zrlyou,zrlyou的博客,我的博客,阿伦" />
+	<meta name="keywords" content="zrlyou,zrlyou的博客,我的博客,个人博客,阿伦" />
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 <!-- 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
 	<!--[if lt IE 9]>
