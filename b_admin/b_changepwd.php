@@ -11,6 +11,7 @@ if (!isset($_SESSION['username'])){
 	<title>修改密码</title>
 	<link rel="stylesheet" type="text/css" href="css/admin.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/public.js"></script>
 </head>
 <body>
 <div class="column-title">
@@ -21,15 +22,24 @@ if (!isset($_SESSION['username'])){
 	<table class="table table-bordered">
 		<tr class="control-tr">		
 			<td class="control-td"><label class="column-name">旧密码<span style="color: red;">*</span>:</label></td>
-			<td><input type="password" name="oldpwd" class="input-width form-control"></td>
+			<td>
+				<input type="password" name="oldpwd" class="input-width form-control" onblur="checkVarIsNull(this,'旧密码为不能空!','t_error')">
+				<div id="op_error"></div>
+			</td>
 		</tr>
 		<tr class="control-tr">		
 			<td class="control-td"><label class="column-name">新密码<span style="color: red;">*</span>:</label></td>
-			<td><input type="password" name="newpwd" class="input-width form-control"></td>
+			<td>
+				<input type="password" name="newpwd" class="input-width form-control" onblur="checkVarIsNull(this,'新密码为不能空!','t_error')">
+				<div id="np_error"></div>
+			</td>
 		</tr>
 		<tr class="control-tr">		
 			<td class="control-td"><label class="column-name">确认密码<span style="color: red;">*</span>:</label></td>
-			<td><input type="password" name="checkpwd" class="input-width form-control"></td>
+			<td>
+				<input type="password" name="checkpwd" class="input-width form-control" onblur="checkPwd()">
+				<div id="cp_error"></div>
+			</td>
 		</tr>
 	</table>
 	<div>

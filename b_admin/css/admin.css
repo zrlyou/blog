@@ -81,12 +81,9 @@ a{
 	cursor: pointer;
 }
 .left > ul > li > a.a_list1 {
-	background: url("../images/ic_user.png") no-repeat 15px;
+	background: url("../images/ic_chats.png") no-repeat 15px;
 }
 .left > ul > li > a.a_list2 {
-	background: url("../images/ic_grid.png") no-repeat 15px;
-}
-.left > ul > li > a.a_list3 {
 	background: url("../images/ic_user.png") no-repeat 15px;
 }
 .left > ul > li > .menu_list {
@@ -130,6 +127,7 @@ a{
 	margin-top:5%;
 }
 .input-width {
+	float:left;
 	width:30%;
 }
 .control-btn {
@@ -141,4 +139,11 @@ a{
 }
 .control-a {
 	margin-left:5%;
+}
+#t_error,#u_error,#s_error,#w_error,#q_error {
+	margin-left:1%;
+	line-height: 34px;
+	float:left;
+	color:red;
+	font-weight:bolder;
 }

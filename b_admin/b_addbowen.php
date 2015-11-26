@@ -21,17 +21,21 @@ if (!isset($_SESSION['username'])){
     </script>
     <script type="text/javascript" src="ueditor/ueditor.config.js"></script>
     <script type="text/javascript" src="ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="js/public.js"></script>
 </head>
 <body>
 <div class="column-title">
 	<h2>添加博文</h2>
 </div>
 <div class="showform">
-<form name="infoform" action="" method="post">
+<form name="infoform" action="" method="post" onsubmit="return checkIsNull()">
 	<table class="table table-bordered">
 		<tr class="control-tr">		
 			<td class="control-td"><label class="column-name">标题<span style="color: red;">*</span>:</label></td>
-			<td><input type="text" name="title" class="input-width form-control"></td>
+			<td>
+				<input type="text" name="title" id="title" class="input-width form-control" onblur="checkVarIsNull(this,'用户名为不能空!','t_error')"> 
+				<div id="t_error"></div>
+			</td>
 		</tr>
 		<tr class="control-tr">		
 			<td class="control-td"><label class="column-name">内容<span style="color: red;">*</span>:</label></td>
@@ -53,7 +57,7 @@ if (!isset($_SESSION['username'])){
 @$title   = trim($_POST['title']);
 @$content = trim($_POST['content']);
 
-
+die;
 if (@$_POST['submit']){
 	if (empty($title) || empty($content)){
 		echo "<script>alert('请确认信息是否完整!');history.back();</script>";

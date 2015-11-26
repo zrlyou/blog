@@ -1,3 +1,11 @@
+function checkIsNull(){
+	if ($("[name='username']").val()=="" || $("[name='password']").val()==""){
+		alert("请确认信息的完整性!");
+		return false;
+	} else {
+		return true;
+	}
+}
 
 $(function(){
 	$("[name='username']").blur(function(){

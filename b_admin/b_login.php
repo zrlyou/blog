@@ -11,7 +11,7 @@
 		<span>后台登录</span>
 	</div>
 	<div class="login">
-		<form name="loginform" id="loginform" action="b_checklogin.php" method="post">
+		<form name="loginform" id="loginform" action="b_checklogin.php" onsubmit="return checkIsNull();" method="post">
 			<div class="login_title">
 				<h3>后台登录</h3>	
 			</div>
@@ -25,7 +25,7 @@
          		<input type="password" class="form-control" name="password" >
       		</div>
 			<div style="text-align:center;">
-				<input type="submit" name="submit" value="登录" class="btn btn-primary">
+				<input type="submit" name="submit" value="登录" class="btn btn-primary" style="width:30%;">
 			</div>
 		</form>
 	</div>

@@ -15,6 +15,7 @@ $info = $user->getUserInfo();
 	<title>信息修改</title>
 	<link rel="stylesheet" type="text/css" href="css/admin.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/public.js"></script>
 </head>
 <body>
 <div class="column-title">
@@ -25,19 +26,31 @@ $info = $user->getUserInfo();
 	<table class="table table-bordered">
 		<tr class="control-tr">		
 			<td class="control-td"><label class="column-name">用户名<span style="color: red;">*</span>:</label></td>
-			<td><input type="text" name="username" class="input-width form-control" value="<?php echo $info['username'];?>"></td>
+			<td>
+				<input type="text" name="username" class="input-width form-control" value="<?php echo $info['username'];?>" onblur="checkVarIsNull(this,'用户名为不能空!','u_error')">
+				<div id="u_error"></div>
+			</td>
 		</tr>
 		<tr class="control-tr">		
 			<td class="control-td"><label class="column-name">个性签名<span style="color: red;">*</span>:</label></td>
-			<td><input type="text" name="signature" class="input-width form-control" value="<?php echo $info['signature'];?>"></td>
+			<td>
+				<input type="text" name="signature" class="input-width form-control" value="<?php echo $info['signature'];?>" onblur="checkVarIsNull(this,'个性签名为不能空!','s_error')">
+				<div id="s_error"></div>
+			</td>
 		</tr>
 		<tr class="control-tr">		
-			<td class="control-td"><label class="column-name">微博<span style="color: red;">*</span>:</label></td>
-			<td><input type="text" name="weibo" class="input-width form-control" value="<?php echo $info['weibo'];?>"></td>
+			<td class="control-td"><label class="column-name">微博地址<span style="color: red;">*</span>:</label></td>
+			<td>
+				<input type="text" name="weibo" class="input-width form-control" value="<?php echo $info['weibo'];?>" onblur="checkVarIsNull(this,'微博地址为不能空!','w_error')">
+				<div id="w_error"></div>
+			</td>
 		</tr>
 		<tr class="control-tr">		
-			<td class="control-td"><label class="column-name">QQ空间<span style="color: red;">*</span>:</label></td>
-			<td><input type="text" name="qq_zone" class="input-width form-control" value="<?php echo $info['qq_zone'];?>"> </td>
+			<td class="control-td"><label class="column-name">QQ空间地址<span style="color: red;">*</span>:</label></td>
+			<td>
+				<input type="text" name="qq_zone" class="input-width form-control" value="<?php echo $info['qq_zone'];?>" onblur="checkVarIsNull(this,'QQ空间地址为不能空!','q_error')"> 
+				<div id="q_error"></div>
+			</td>
 		</tr>
 	</table>
 	<div>
