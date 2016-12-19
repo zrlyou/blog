@@ -6,3 +6,7 @@ Personal blog
 /include		类文件存放目录
 /b_admin		后台
 index.php 		博客首页
+
+默认管理员:
+账号:admin	 
+密码:123456
