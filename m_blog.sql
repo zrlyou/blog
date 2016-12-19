@@ -55,3 +55,5 @@ CREATE TABLE `user` (
   `loginip` varchar(20) NOT NULL DEFAULT '0.0.0.0',
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+INSERT INTO `m_blog`.`user` (`uid`, `username`, `password`, `signature`, `weibo`, `github_url`, `logintime`, `loginip`) VALUES ('1', 'admin', '7598b6bbbc87487a53111bb6ae79f0e2', 'Notes', 'http://weibo.com/u/2337162545', 'https://github.com/zrlyou', '1482113109', '127.0.0.1');
