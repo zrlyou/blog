@@ -21,7 +21,7 @@ class User {
 		//获取当前用户登录时的ip
 		$loginip   = $_SERVER['REMOTE_ADDR'];
 		//定义SQL更新语句，用于更新user表的logintime和loginip两个字段
-		$sql       = "update user set logintime=$time,loginip='$loginip' where username='$username'";
+		$sql       = "UPDATE user SET logintime=$time,loginip='$loginip' WHERE username='$username'";
 		//执行SQL语句
 		$db->query($conn,$sql);
 	}
@@ -34,7 +34,7 @@ class User {
 		$conn = $db->connect();
 		if ($conn){
 			//定义SQL查询语句，获取user表里的用户
-			$sql  = "select username,password,logintime,loginip from user where username='$username'";
+			$sql  = "SELECT username,password,logintime,loginip FROM user WHERE username='$username'";
 			$user = $db->select($conn,$sql);
 			if (!$user || $password!=$user['password']){
 				return false;
@@ -63,7 +63,7 @@ class User {
 		$conn     = $db->connect();
 		if ($conn){				//连接成功后开始查询的操作
 			//定义查询语句,获取当前登录用户的相关信息
-			$sql  = "select uid,username,signature,weibo,qq_zone from user where username='$username'";
+			$sql  = "SELECT uid,username,signature,weibo,github_url FROM user WHERE username='$username'";
 			$user = $db->select($conn,$sql);
 			if ($user){
 				//返回数组
@@ -81,7 +81,7 @@ class User {
 		$conn = $db->connect();
 		if ($conn){				//连接成功后开始更新数据的操作
 			//定义SQL语句，用于更新用户的相关信息
-			$sql = "update user set username='$username',signature='$signature',weibo='$weibo',qq_zone='$qq_zone' where uid=$uid";
+			$sql = "UPDATE user SET username='$username',signature='$signature',weibo='$weibo',github_url='$qq_zone' WHERE uid=$uid";
 			if ($db->query($conn,$sql)){
 				//成功返回true
 				return true;
@@ -103,14 +103,14 @@ class User {
 
 		if ($conn){				//连接成功后开始数据库操作
 			//定义SQL语句，获取用户当前使用的密码
-			$sql = "select password from user where username='$username'";
+			$sql = "SELECT password FROM user WHERE username='$username'";
 			$user = $db->select($conn,$sql);
 			if (!$user || $user['password']!=$oldpwd){
 				return "<script>alert('旧密码输入错误！请重新输入!');history.back();</script>";
 			} else {
 				//旧密码与数据库中的一样，则进行新密码的更新操作
 				//定义SQl语句，用于更新新密码
-				$sql = "update user set password='$newpwd' where username='$username'";
+				$sql = "UPDATE user SET password='$newpwd' WHERE username='$username'";
 				if ($db->query($conn,$sql)){
 					return "<script>alert('修改成功!');history.back();</script>";
 				} else {

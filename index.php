@@ -4,8 +4,8 @@ define('ROOT_PATH',dirname(__FILE__));
 //引入首页类
 include ROOT_PATH.'/include/Index.class.php';
 $index     = new Index();
-$userinfo = $index->getUserInfoToIndex();
-$bloginfo = $index->getBowenListToIndex();
+@$userinfo = $index->getUserInfoToIndex();
+@$bloginfo = $index->getBowenListToIndex();
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,8 +26,8 @@ $bloginfo = $index->getBowenListToIndex();
 	<div class="header-top">
 		<div class="header-top-left">
 			<ul>
+                <li><a href="<?php echo $userinfo['github_url'];?>">GitHub</a></li>
 				<li><a href="<?php echo $userinfo['weibo'];?>">我的微博</a></li>
-				<li><a href="<?php echo $userinfo['qq_zone'];?>">我的QQ空间</a></li>
 			</ul>
 		</div>
 	</div>
@@ -77,13 +77,25 @@ $bloginfo = $index->getBowenListToIndex();
 		</div>
 		<div class="main-right">
 			<div class="blog-title">
-				<h1><?php echo $bloginfo[0]['title'];?></h1>
+				<h1><?php
+					if($bloginfo){
+						echo $bloginfo[0]['title'];
+					} else{
+						echo "没有数据...";
+					}
+					?></h1>
 			</div>
 			<div class="blog-time">	
 				<span>发布时间:<?php echo date("Y-m-d H:i:s",$bloginfo[0]['time']);?></span>
 			</div>
 			<div class="blog-content">
-				<?php echo $bloginfo[0]['content'];?>
+				<?php
+				if($bloginfo){
+					echo $bloginfo[0]['content'];
+				} else{
+					echo "没有数据...";
+				}
+				?>
 			</div>
 		</div>
 	</div>

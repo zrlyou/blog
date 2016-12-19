@@ -22,7 +22,7 @@ class Index {
 		$conn     = $db->connect();
 		if ($conn){				//连接成功后开始查询的操作
 			//定义查询语句,获取当前登录用户的相关信息
-			$sql  = "select uid,username,signature,weibo,qq_zone from user";
+			$sql  = "SELECT uid,username,signature,weibo,github_url FROM user";
 			$user = $db->select($conn,$sql);
 			if ($user){
 				//返回数组
@@ -41,7 +41,7 @@ class Index {
 		//连接数据库
 		$conn = $db->connect();
 		if ($conn){
-			$sql = "select bid,title,time,content from blog order by time desc limit 6";
+			$sql = "SELECT bid,title,time,content FROM blog ORDER BY time DESC LIMIT 6";
 			$bloginfo = $db->selectAll($conn,$sql);
 			if ($bloginfo){
 				return $bloginfo;
@@ -63,7 +63,7 @@ class Index {
 		$bid = intval($bid);
 		$bid = mysqli_real_escape_string($conn,$bid);
 		if ($conn){
-			$sql = "select title,time,content from blog where bid=$bid";
+			$sql = "SELECT title,time,content FROM blog WHERE bid=$bid";
 			$bowen = $db->select($conn,$sql);
 			if ($bowen){
 				return $bowen;

@@ -28,13 +28,13 @@ if (!isset($_SESSION['username'])){
 		<?php
 		include('../include/Blog.class.php');
 		$blogs = new Blog();
-		$result = $blogs->showListForBlog();
+		@$result = $blogs->showListForBlog();
 		if ($result){
 			for ($i=0;$i<count($result);$i++){
 				echo '<tr class="textcenter"><td>'.$result[$i]['bid'].'</td><td>'.$result[$i]['title'].'</td><td>'.date("Y-m-d H:i:s",$result[$i]['time']).'</td><td><a href="b_editbowen.php?bid='.$result[$i]['bid'].'">[编辑]</a><a class="control-a" href="b_deletebowen.php?bid='.$result[$i]['bid'].'" onClick="return isConfirm();">[删除]</a></td></tr>';
 			}
 		} else {
-			echo '没有数据...';
+			echo '<tr class="textcenter"><td colspan="4" width="100%">没有数据...</td></tr>';
 		}
 		?>
 	</table>

@@ -27,8 +27,8 @@ $bloginfo = $index->getBowenListToIndex();
 	<div class="header-top">
 		<div class="header-top-left">
 			<ul>
+				<li><a href="<?php echo $userinfo['github_url'];?>">GitHub</a></li>
 				<li><a href="<?php echo $userinfo['weibo'];?>">我的微博</a></li>
-				<li><a href="<?php echo $userinfo['qq_zone'];?>">我的QQ空间</a></li>
 			</ul>
 		</div>
 	</div>

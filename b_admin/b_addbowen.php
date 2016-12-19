@@ -57,7 +57,6 @@ if (!isset($_SESSION['username'])){
 @$title   = trim($_POST['title']);
 @$content = trim($_POST['content']);
 
-die;
 if (@$_POST['submit']){
 	if (empty($title) || empty($content)){
 		echo "<script>alert('请确认信息是否完整!');history.back();</script>";
