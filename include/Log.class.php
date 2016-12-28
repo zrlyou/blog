@@ -34,7 +34,7 @@ class Log {
 
 		if ($conn){					//数据库连接成功，则进行记录操作
 			//定义记录登录信息的SQL语句
-			$sql = "insert into log(username,loginip,logintime,status) values('$username','$loginip',$logintime,$status)";
+			$sql = "INSERT INTO log(username,loginip,logintime,status) VALUES('$username','$loginip',$logintime,$status)";
 			//执行记录的操作
 			if ($db->query($conn,$sql)){
 				return true;
@@ -53,7 +53,7 @@ class Log {
 
 		if ($conn){			//数据库连接成功，开始读取数据
 			//按照时间顺序倒序读取数据
-			$sql = "select lid,username,loginip,logintime,status from log order by logintime desc";
+			$sql = "SELECT lid,username,loginip,logintime,status FROM log ORDER BY logintime DESC";
 			$result = $db->selectAll($conn,$sql);
 			if ($result){
 				return $result;
