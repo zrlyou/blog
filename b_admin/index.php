@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 if (!isset($_SESSION['username'])){
 	header("Location:b_login.php");
@@ -18,7 +18,7 @@ if (@$_GET['action'] == 'logout'){
 </head>
 <body>
 <div class="top">
-	<span>后台管理系统</span>
+	<span>后台管理</span>
 	<div class="top-right">
 		<p>上次登录时间:<?php echo $_SESSION['last_logintime'];?> &nbsp&nbsp  上次登录ip:<?php echo $_SESSION['last_loginip'];?></p>
 		<span>您好!<?php echo $_SESSION['username'];?></span>
@@ -40,6 +40,7 @@ if (@$_GET['action'] == 'logout'){
 			<div class="menu_list" style="display:none;">
 				<a class="lista_first" href="b_changeinfo.php" target="iframe">信息修改</a>
 				<a href="b_changepwd.php" target="iframe">修改密码</a>
+				<a href="b_showlog.php" target="iframe">登陆日志</a>
 			</div>
 		</li>
 	</ul>
