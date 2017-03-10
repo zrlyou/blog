@@ -11,9 +11,9 @@ $index     = new Index();
 <html>
 <head>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0" charset="UTF-8">
-	<title>zrlyou的博客</title>
-	<meta name="description" content="zrlyou,zrlyou的博客,我的博客,阿伦" />
-	<meta name="keywords" content="zrlyou,zrlyou的博客,我的博客,个人博客,阿伦" />
+	<title><?php echo $userinfo['username']?>的博客</title>
+	<meta name="description" content="<?php echo $userinfo['username']?>,<?php echo $userinfo['username']?>的博客,我的博客" />
+	<meta name="keywords" content="<?php echo $userinfo['username']?>,<?php echo $userinfo['username']?>的博客,我的博客,个人博客,阿伦" />
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 <!-- 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
 	<!--[if lt IE 9]>
@@ -104,7 +104,7 @@ $index     = new Index();
 <!-- footer start-->
 <div class="footer">
 	<div class="copyright">
-		<span>Copyright &nbsp By &nbspzrlyou &nbsp 版权所有</span>
+		<span>Copyright &nbsp By &nbsp<?php echo $userinfo['username']?> &nbsp 版权所有</span>
 	</div>
 </div>
 <!-- footer end -->
