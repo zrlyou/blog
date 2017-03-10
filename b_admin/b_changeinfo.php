@@ -48,7 +48,7 @@ $info = $user->getUserInfo();
 		<tr class="control-tr">		
 			<td class="control-td"><label class="column-name">GitHub<span style="color: red;">*</span>:</label></td>
 			<td>
-				<input type="text" name="qq_zone" class="input-width form-control" value="<?php echo $info['github_url'];?>" onblur="checkVarIsNull(this,'QQ空间地址为不能空!','q_error')"> 
+				<input type="text" name="qq_zone" class="input-width form-control" value="<?php echo $info['github_url'];?>" onblur="checkVarIsNull(this,'GitHub为不能空!','q_error')"> 
 				<div id="q_error"></div>
 			</td>
 		</tr>
