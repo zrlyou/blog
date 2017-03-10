@@ -7,4 +7,3 @@ $config = array(
         'DB_PORT' => 3306
         );
 return $config;
-?>
