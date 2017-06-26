@@ -3,3 +3,6 @@
 *.xml
 images/aa.png
 robots.txt
+*.php_bak
+test.html
+*.gz
