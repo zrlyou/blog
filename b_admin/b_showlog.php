@@ -17,7 +17,6 @@ if (!isset($_SESSION['username'])){
 	<h2>登录记录</h2>
 </div>
 <div class="showform">
-<form name="infoform" action="" method="post">
 	<table class="table table-bordered">
 		<tr class="active">
 			<th width="8%" class="textcenter">id</th>
@@ -27,9 +26,14 @@ if (!isset($_SESSION['username'])){
 			<th class="textcenter">状态</th>
 		</tr>
 		<?php
+            if(!isset($_GET['page'])){
+                $page = 1;
+            }else {
+                $page = intval($_GET['page']);
+            }
 			include('../include/Log.class.php');
 			$log = new Log();
-			$result= $log->showLogToAdmin();
+			$result= $log->showLogToAdmin($page);
 			if ($result){
 				for ($i=0;$i<count($result);$i++){
 					if ($result[$i]['status']){
@@ -44,9 +48,21 @@ if (!isset($_SESSION['username'])){
 			}
 		?>
 	</table>
-	<div>
+	<div class="pages">
+		<?php
+			//include('../include/Pages.class.php');
+            $pages = new Pages();
+			$all_pages = $pages->getPages('log');
+            if($all_pages){
+                for($i=0; $i<$all_pages; $i++){
+                    $p = $i + 1;
+                    echo '<a class="btn btn-info" href="b_showlog.php?page='.$p.'">'.$p.'</a>';
+                }
+            } else {
+                echo "No paging!";
+            }
+		?>
 	</div>
-</form>
 </div>
 </body>
 </html>

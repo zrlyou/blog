@@ -1,6 +1,6 @@
 <?php
 /**
- *Blog类 ，用于对博文的操作
+ * Blog类 ，用于对博文的操作
  *
  *
  * Author:zrlyouwin@gmail.com
@@ -101,4 +101,3 @@ class Blog {
 		$db->close($conn);
 	}
 }
-

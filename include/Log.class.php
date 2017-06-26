@@ -9,6 +9,7 @@
  */
 //加载数据库类
 include_once('../include/DbMysqli.class.php');
+include_once('../include/Pages.class.php');
 
 class Log {
 
@@ -45,7 +46,9 @@ class Log {
 		$db->close($conn);
 	}
 	//showLogToAdmin方法，用于后台首页显示登录的相关信息 
-	public function showLogToAdmin(){
+	public function showLogToAdmin($page){
+        $pages = new Pages();
+		$limit = ($page - 1) * $pages->offset;
 		//获取数据库的一个对象
 		$db = $this->dbConnectForLog();
 		//连接数据库
@@ -53,7 +56,7 @@ class Log {
 
 		if ($conn){			//数据库连接成功，开始读取数据
 			//按照时间顺序倒序读取数据
-			$sql = "SELECT lid,username,loginip,logintime,status FROM log ORDER BY logintime DESC";
+			$sql = "SELECT lid,username,loginip,logintime,status FROM log ORDER BY logintime DESC LIMIT ".$limit.','.$pages->offset;
 			$result = $db->selectAll($conn,$sql);
 			if ($result){
 				return $result;

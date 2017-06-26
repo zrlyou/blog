@@ -50,7 +50,7 @@ class DbMysqli {
 	//selectAll方法，查询所有数据，返回一个关联数组
 	public function selectAll($link,$sql){
 		$result = $link->query($sql);
-		$row    = array();
+		$rows   = array();
 		if ($result->num_rows<0){
 			echo 'The record does not exist!';
 		} else {
