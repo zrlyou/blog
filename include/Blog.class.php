@@ -47,7 +47,7 @@ class Blog {
 		if ($conn){
 			$sql = "update blog set title='$title',content='$content' where bid=$bid";
 			if ($db->query($conn,$sql)){
-				return "<script>alert('编辑成功!');location.href='b_addbowen.php'</script>";
+				return "<script>alert('编辑成功!');location.href='b_bowenlist.php'</script>";
 			} else {
 				return "<script>alert('编辑失败!');history.back();</script>";
 			}
