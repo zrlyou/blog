@@ -49,6 +49,8 @@ if (!isset($_SESSION['username'])){
 		?>
 	</table>
 	<div class="pages">
+		<ul class="pagination">
+			<li><a href="#"><<</a></li>
 		<?php
 			//include('../include/Pages.class.php');
             $pages = new Pages();
@@ -56,12 +58,14 @@ if (!isset($_SESSION['username'])){
             if($all_pages){
                 for($i=0; $i<$all_pages; $i++){
                     $p = $i + 1;
-                    echo '<a class="btn btn-info" href="b_showlog.php?page='.$p.'">'.$p.'</a>';
+                    echo '<li><a href="b_showlog.php?page='.$p.'">'.$p.'</a></li>';
                 }
             } else {
                 echo "No paging!";
             }
 		?>
+			<li><a href="#">>></a></li>
+		</ul>
 	</div>
 </div>
 </body>
