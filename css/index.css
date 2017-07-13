@@ -167,6 +167,45 @@ h1 {
 	width:95%;
 	height:100%;
 }
+
+.list-title {
+    margin-left: auto;
+    margin-right: auto;
+	width: 90%;
+	padding-top: 1.2%;
+	padding-bottom: 2%;
+	color:#2b2927;
+    border-bottom:dashed 1px #B0AD9C;
+}
+
+.list-content {
+	width:95%;
+	margin:5% auto;
+}
+
+.list-content li {
+    width: 100%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-bottom: dashed 1px #B0AD9C;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.list-content li:hover {
+   background-color: #fff5d4;
+   border: dashed 1px #B0AD9C;
+}
+
+.list-content li a {
+    margin-left: 2%;
+}
+
+.pub_date {
+    float: right;
+    margin-right: 1.5%;
+}
+
 .footer {
 	width:100%;
 	text-align:center;

@@ -14,12 +14,8 @@ $bloginfo = $index->getBowenListToIndex();
 <html>
 <head>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0" charset="UTF-8">
-	<title>我的博客</title>
+	<title><?php echo $bowen['title'];?></title>
 	<link rel="stylesheet" type="text/css" href="css/index.css">
-<!-- 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
-	<!--[if lt IE 9]>
-　　　<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-　<![endif]-->
 </head>
 <body>
 <!-- header start -->
@@ -28,7 +24,6 @@ $bloginfo = $index->getBowenListToIndex();
 		<div class="header-top-left">
 			<ul>
 				<li><a href="<?php echo $userinfo['github_url'];?>">GitHub</a></li>
-				<li><a href="<?php echo $userinfo['weibo'];?>">我的微博</a></li>
 			</ul>
 		</div>
 	</div>
@@ -43,7 +38,7 @@ $bloginfo = $index->getBowenListToIndex();
 		</div>
 		<div class="main-nav">
 			<a href="index.php">首页</a>
-			<a href="#">关于我</a>
+            <a href="showlists.php">文章列表</a>
 		</div>
 		<div class="main-left">
 			<div class="myinfo">
