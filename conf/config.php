@@ -1,9 +1,7 @@
 <?php
-$config = array(
-        'DB_HOST' => '10.20.69.194',
-        'DB_USER' => 'root',
-        'DB_PWD'  => 'root123456',
-        'DB_NAME' => 'm_blog',
-        'DB_PORT' => 3306
-        );
-return $config;
+//定义数据库相关信息
+define('DB_HOST', '10.20.69.194');
+define('DB_USER', 'root');
+define('DB_PASS', 'root123456');
+define('DB_NAME', 'm_blog');
+define('DB_PORT', 3306);
