@@ -5,19 +5,18 @@
  * FileName     : Pages.class.php
  * Description  : 处理分页
  */
+
 class Pages {
     var $offset;
     public function __construct()
     {
-        $this->offset = 5;
+        $this->offset = 10;
     }
     //初始化数据库
     private function dbConnectForPages()
     {
-       //加载db配置文件
-        include('../conf/config.php');
         //实例化数据库类对象
-        $db = new mysqli($config['DB_HOST'], $config['DB_USER'], $config['DB_PWD'], $config['DB_NAME'], $config['DB_PORT']);
+        $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
         if($db->connect_error) {
            die("Connect to DB server failed: ".$db->connect_error);
         } else {

@@ -6,22 +6,22 @@
  * Author:zrlyouwin@gmail.com
  * 
  */
+include_once('../conf/config.php');
 //加载数据库操作类
 include('DbMysqli.class.php');
+include('Pages.class.php');
 
 class Blog {
 	//初始化数据库,返回数据库的一个对象
-	private function dbConnectForBolg(){
-		//加载数据库配置文件
-		include('../conf/config.php');
+	private function dbConnectForBlog(){
 		//实例化数据库类对象
-		$db = new DbMysqli($config['DB_HOST'],$config['DB_USER'],$config['DB_PWD'],$config['DB_NAME'],$config['DB_PORT']);
+		$db = new DbMysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
 		return $db;
 	}
 	//添加博文
 	public function addBowenForBlog($title,$time,$content){
 		//获取连接数据库的有一个对象
-		$db = $this->dbConnectForBolg();
+		$db = $this->dbConnectForBlog();
 		//连接数据库
 		$conn = $db->connect();
 
@@ -40,7 +40,7 @@ class Blog {
 	//保存编辑后的博文
 	public function saveBowenForBlog($bid,$title,$content){
 		//获取连接数据库的一个对象
-		$db = $this->dbConnectForBolg();
+		$db = $this->dbConnectForBlog();
 		//连接数据库
 		$conn = $db->connect();
 		//连接成功后，开始查询操作
@@ -56,7 +56,7 @@ class Blog {
 	//删除某篇博文
 	public function deleteBowenForBlog($bid){
 		//获取连接数据库的一个对象
-		$db = $this->dbConnectForBolg();
+		$db = $this->dbConnectForBlog();
 		//连接数据库
 		$conn = $db->connect();
 		//连接成功后，开始删除操作
@@ -70,14 +70,16 @@ class Blog {
 		}
 	}
 	//显示博文列表
-	public function showListForBlog(){
+	public function showListForBlog($page){
+        $pages = new Pages();
+        $limit = ($page - 1) * $pages->offset;
 		//获取连接数据库的一个对象
-		$db = $this->dbConnectForBolg();
+		$db = $this->dbConnectForBlog();
 		//连接数据库
 		$conn = $db->connect();
 		//连接成功后，开始查询操作
 		if ($conn) {
-			$sql = "select * from blog order by time desc";
+			$sql = "SELECT * FROM `blog` ORDER BY `time` DESC LIMIT ".$limit.','.$pages->offset;
 			$blogs = $db->selectAll($conn,$sql);
 			if ($blogs){
 				return $blogs;
@@ -88,7 +90,7 @@ class Blog {
 	//显示某篇博文具体信息
 	public function showContentForBlog($bid){
 		//获取数据库的一个对象
-		$db = $this->dbConnectForBolg();
+		$db = $this->dbConnectForBlog();
 		//连接数据库
 		$conn = $db->connect();
 		if ($conn){

@@ -13,7 +13,7 @@ class User {
 		//加载配置文件
 		include('../conf/config.php');
 		//实例化DbMysqli对象
-		$db   = new DbMysqli($config['DB_HOST'],$config['DB_USER'],$config['DB_PWD'],$config['DB_NAME'],$config['DB_PORT']);
+		$db   = new DbMysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
 		return $db;
 	}
 	//记录登陆时间和ip

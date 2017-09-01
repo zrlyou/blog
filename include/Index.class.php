@@ -1,13 +1,13 @@
 <?php
-header('Content-Type:text/html;charset=utf-8');
+include_once('./conf/config.php');
 include('DbMysqli.class.php');
+include('Pages.class.php');
+
 class Index {
 	//初始化数据库,返回数据库的一个对象
 	public function dbConnectForIndex(){
-		//加载数据库配置文件
-		include ROOT_PATH.'/conf/config.php';
 		//实例化数据库类对象
-		$db = new DbMysqli($config['DB_HOST'],$config['DB_USER'],$config['DB_PWD'],$config['DB_NAME'],$config['DB_PORT']);
+		$db = new DbMysqli(DB_HOST, DB_USER , DB_PASS, DB_NAME, DB_PORT);
 		if ($db){
 			return $db;
 		} else {
@@ -34,17 +34,36 @@ class Index {
 		//关闭数据库连接
 		$db->close($conn);
 	}
+
+    //获取最新五条博文
+    public function getLatestList(){
+        $db = $this->dbConnectForIndex();
+        $conn = $db->connect();
+
+        if($conn){
+            $sql = "SELECT bid,title,time,content FROM blog ORDER BY time DESC LIMIT 5";
+            $bloglatestlist = $db->selectAll($conn, $sql);
+            if($bloglatestlist){
+                return $bloglatestlist;
+            } else {
+                echo "没有数据...";
+            }
+        }
+        $db->close($conn);
+    }
 	//获取博文列表
-	public function getBowenListToIndex(){
+	public function getBowenList($page){
 		//获取数据库的一个对象
 		$db = $this->dbConnectForIndex();
 		//连接数据库
 		$conn = $db->connect();
 		if ($conn){
-			$sql = "SELECT bid,title,time,content FROM blog ORDER BY time DESC LIMIT 6";
-			$bloginfo = $db->selectAll($conn,$sql);
-			if ($bloginfo){
-				return $bloginfo;
+            $pages = new Pages();
+            $limit = ($page - 1) * $pages->offset;
+            $sql = "SELECT bid, title, time FROM blog ORDER BY time DESC LIMIT ".$limit.','.$pages->offset;
+			$bloglist = $db->selectAll($conn,$sql);
+			if ($bloglist){
+                return $bloglist;
 			} else {
 				echo '没有数据...';
 			}
@@ -53,6 +72,7 @@ class Index {
 		}
 		$db->close($conn);
 	}
+    
 	//获取某一篇博文
 	public function getBowenToIndex($bid){
 		// 获取连接数据库的一个对象

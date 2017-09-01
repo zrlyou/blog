@@ -7,19 +7,17 @@
  * Author:zrlyou<zrlyouwin@gmail.com>
  * 
  */
+include_once('../conf/config.php');
 //加载数据库类
-include_once('../include/DbMysqli.class.php');
-include_once('../include/Pages.class.php');
+include_once('DbMysqli.class.php');
+include_once('Pages.class.php');
 
 class Log {
 
 	//初始化数据库的相关信息 返回数据库的一个对象
 	private function dbConnectForLog(){
-		//引入数据库的配置文件
-		include('../conf/config.php');
 		//实例化数据库类
-		$db = new DbMysqli($config['DB_HOST'],$config['DB_USER'],$config['DB_PWD'],$config['DB_NAME'],$config['DB_PORT']);
-
+		$db = new DbMysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
 		if (!$db){
 			die('数据库初始化失败!');
 		}
