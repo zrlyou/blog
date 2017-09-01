@@ -1,13 +1,11 @@
 <?php
-define('ROOT_PATH',dirname(__FILE__));
-//引入首页类
-include ROOT_PATH.'/include/Index.class.php';
+include 'include/Index.class.php';
 $bid = trim($_GET['bid']);
 if (!$bid) echo "<script>alert('参数错误!');history.back();</script>";
 $index = new Index();
 $bowen = $index->getBowenToIndex($bid);
 $userinfo = $index->getUserInfoToIndex();
-$bloginfo = $index->getBowenListToIndex();
+$bloginfo = $index->getLatestList();
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +52,7 @@ $bloginfo = $index->getBowenListToIndex();
 			</div>
 			<div class="blog-list">
 				<div class="blog-list-title">
-					<span>最新博文</span>
+					<span>最新文章</span>
 				</div>
 				<div class="blog-list-content">
 					<ul>
