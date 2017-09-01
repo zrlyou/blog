@@ -97,6 +97,8 @@ h1 {
 	float:left;
 	border:solid 1px #B0AD9C;
 	text-align:center;
+    border-radius:5px;
+    -moz-border-radius:5px; /* Old Firefox */
 }
 .myinfo-title {
 	width:100%;
@@ -125,6 +127,7 @@ h1 {
 .blog-list-content li {
 	width: 100%;
 	padding:0.1% 0;
+	border-bottom: dashed 1px #B0AD9C;
 }
 .blog-list-content a {
 	margin-left: 8%;
@@ -137,6 +140,8 @@ h1 {
 	margin-left:1.5%;
 	width:73%;
 	border:solid 1px #B0AD9C;
+    border-radius:5px;
+    -moz-border-radius:5px; /* Old Firefox */
 }
 .blog-title {
 	width:100%;
@@ -171,8 +176,8 @@ h1 {
 .list-title {
     margin-left: auto;
     margin-right: auto;
-	width: 90%;
 	padding-top: 1.2%;
+    padding-left: 4%;
 	padding-bottom: 2%;
 	color:#2b2927;
     border-bottom:dashed 1px #B0AD9C;
@@ -180,7 +185,8 @@ h1 {
 
 .list-content {
 	width:95%;
-	margin:5% auto;
+    margin-top: 4%;
+    margin-left: 3%;
 }
 
 .list-content li {
@@ -195,10 +201,13 @@ h1 {
 .list-content li:hover {
    background-color: #fff5d4;
    border: dashed 1px #B0AD9C;
+   border-radius:5px;
+   -moz-border-radius:5px;
 }
 
 .list-content li a {
     margin-left: 2%;
+    color:#2b2927;
 }
 
 .pub_date {
@@ -214,3 +223,28 @@ h1 {
 	padding-top:3%;
 	padding-bottom:2%;
 }
+
+.pages{
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+.pagination{
+    margin-right: 2.5%;
+    display: inline-block;
+    float: right;
+}
+
+.pagination li {
+    display: inline;
+}
+.pagination li a {
+    color: black;
+    float: left;
+    padding: 3px 8px;
+    text-decoration: none;
+    transition:  background-color .3s;
+    border: 1px solid #ddd;
+}
+
+
