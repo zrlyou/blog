@@ -1,11 +1,9 @@
 <?php
-//设置网站路径
-define('ROOT_PATH',dirname(__FILE__));
 //引入首页类
-include ROOT_PATH.'/include/Index.class.php';
+include 'include/Index.class.php';
 $index     = new Index();
 @$userinfo = $index->getUserInfoToIndex();
-@$bloginfo = $index->getBowenListToIndex();
+@$bloginfo = $index->getLatestList();
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,7 +58,7 @@ $index     = new Index();
 						<?php
 						if ($bloginfo){
 							for ($i=0;$i<count($bloginfo);$i++){
-							echo '<li><a href="showcontent.php?bid='.$bloginfo[$i]['bid'].'">'.$bloginfo[$i]['title'].'</a></li>';
+								echo '<li><a href="showcontent.php?bid='.$bloginfo[$i]['bid'].'">'.$bloginfo[$i]['title'].'</a></li>';
 							}
 						} else {
 							echo '没有数据...';
