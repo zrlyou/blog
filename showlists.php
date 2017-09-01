@@ -1,12 +1,9 @@
 <?php
-define('ROOT_PATH',dirname(__FILE__));
-//引入首页类
-include ROOT_PATH.'/include/Index.class.php';
+include 'include/Index.class.php';
 $index = new Index();
 $userinfo = $index->getUserInfoToIndex();
-$bloginfo = $index->getBowenListToIndex();
+$bloginfo = $index->getLatestList();
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +48,7 @@ $bloginfo = $index->getBowenListToIndex();
 			</div>
 			<div class="blog-list">
 				<div class="blog-list-title">
-					<span>最新博文</span>
+					<span>最新文章</span>
 				</div>
 				<div class="blog-list-content">
 					<ul>
@@ -75,9 +72,15 @@ $bloginfo = $index->getBowenListToIndex();
 			<div class="list-content">
                 <ul>
                     <?php
-                        if ($bloginfo){
-                            for($j=0; $j<count($bloginfo); $j++){
-                                echo '<li><a href="showcontent.php?bid='.$bloginfo[$j]['bid'].'">'.$bloginfo[$j]['title'].'</a><span class="pub_date">'.date('Y-m-d', $bloginfo[$j]['time']).'</span></li>';
+                        if(!isset($_GET['page']) || empty($_GET['page'])) {
+                            $page = 1;
+                        } else {
+                            $page = intval($_GET['page']);
+                        }
+                        $lists = $index->getBowenList($page);
+                        if ($lists){
+                            for($j=0; $j<count($lists); $j++){
+                                echo '<li><a href="showcontent.php?bid='.$lists[$j]['bid'].'">'.$lists[$j]['title'].'</a><span class="pub_date">'.date('Y-m-d', $lists[$j]['time']).'</span></li>';
                             }
                         }
                         else {
@@ -86,6 +89,19 @@ $bloginfo = $index->getBowenListToIndex();
                     ?>
                 </ul>
 			</div>
+            <div class="pages">
+                <ul class="pagination">
+                    <?php
+                        $pages = new Pages();
+                        $all_pages = $pages->getPages('blog');
+                        for($i=0;$i<$all_pages;$i++)
+                        {
+                            $p = $i + 1;
+                            echo '<li><a href="showlists.php?page='.$p.'">'.$p.'</a></li>';
+                        }
+                    ?>
+                </ul>
+            </div>
 		</div>
 	</div>
 </div>

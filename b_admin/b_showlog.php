@@ -26,7 +26,7 @@ if (!isset($_SESSION['username'])){
 			<th class="textcenter">状态</th>
 		</tr>
 		<?php
-            if(!isset($_GET['page'])){
+            if(!isset($_GET['page']) || empty($_GET['page'])){
                 $page = 1;
             }else {
                 $page = intval($_GET['page']);
@@ -50,7 +50,6 @@ if (!isset($_SESSION['username'])){
 	</table>
 	<div class="pages">
 		<ul class="pagination">
-			<li><a href="#"><<</a></li>
 		<?php
 			//include('../include/Pages.class.php');
             $pages = new Pages();
@@ -64,7 +63,6 @@ if (!isset($_SESSION['username'])){
                 echo "No paging!";
             }
 		?>
-			<li><a href="#">>></a></li>
 		</ul>
 	</div>
 </div>
