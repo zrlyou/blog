@@ -77,7 +77,7 @@ $bloginfo = $index->getLatestList();
 				<span>发布时间:<?php echo date("Y-m-d H:i:s",$bowen['time']);?></span>
 			</div>
 			<div class="blog-content">
-				<?php echo $bowen['content'];?>
+				<?php if($bowen['content']) echo $bowen['content']; else echo "没有数据"?>
 			</div>
 		</div>
 	</div>
@@ -88,6 +88,7 @@ $bloginfo = $index->getLatestList();
 <div class="footer">
 	<div class="copyright">
 		<span>Copyright &nbsp By &nbspzrlyou &nbsp 版权所有</span>
+		
 	</div>
 </div>
 <!-- footer end -->
