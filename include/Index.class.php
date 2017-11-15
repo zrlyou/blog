@@ -2,8 +2,15 @@
 include_once('./conf/config.php');
 include('DbMysqli.class.php');
 include('Pages.class.php');
+include('BMemcache.php');
 
 class Index {
+    private $mc;
+    
+    public function __construct()
+    {
+        $this->mc = new BMemcache(MEMCACHED_HOST, MEMCACHED_PORT);
+    }
 	//初始化数据库,返回数据库的一个对象
 	public function dbConnectForIndex(){
 		//实例化数据库类对象
@@ -16,40 +23,55 @@ class Index {
 	}
 	//获取用户的相关信息
 	public function getUserInfoToIndex(){
-		//获取数据库的一个对象
-		$db       = $this->dbConnectForIndex();
-		//连接数据库
-		$conn     = $db->connect();
-		if ($conn){				//连接成功后开始查询的操作
-			//定义查询语句,获取当前登录用户的相关信息
-			$sql  = "SELECT uid,username,signature,weibo,github_url FROM user";
-			$user = $db->select($conn,$sql);
-			if ($user){
-				//返回数组
-				return $user;
-			}
-		} else {
-			echo 'DB connect is error!';
-		}
-		//关闭数据库连接
-		$db->close($conn);
+		//定义查询语句,获取当前登录用户的相关信息
+		$sql  = "SELECT uid,username,signature,weibo,github_url FROM user";
+		$user_info_key = md5($sql);
+        $cache_result = $this->mc->getValue($user_info_key);
+        //判断缓存中是否存在数据，有则直接返回，无则读取数据库中的数据
+        if($cache_result){
+            return $cache_result;
+        } else {
+            //获取数据库的一个对象
+            $db = $this->dbConnectForIndex();
+            //连接数据库
+            $conn = $db->connect();
+            if ($conn) {                //连接成功后开始查询的操作
+                $user = $db->select($conn, $sql);
+                if ($user) {
+                    //将数据写入缓存
+                    $this->mc->setValue($user_info_key, $user);
+                    //返回数组
+                    return $user;
+                }
+            } else {
+                echo 'DB connect is error!';
+            }
+            //关闭数据库连接
+            $db->close($conn);
+        }
 	}
 
     //获取最新五条博文
     public function getLatestList(){
-        $db = $this->dbConnectForIndex();
-        $conn = $db->connect();
-
-        if($conn){
-            $sql = "SELECT bid,title,time,content FROM blog ORDER BY time DESC LIMIT 5";
-            $bloglatestlist = $db->selectAll($conn, $sql);
-            if($bloglatestlist){
-                return $bloglatestlist;
-            } else {
-                echo "没有数据...";
+        $sql = "SELECT bid,title,time,content FROM blog ORDER BY time DESC LIMIT 5";
+        $blog_lists_key = md5($sql);
+        $cache_result = $this->mc->getValue($blog_lists_key);
+        if($cache_result){
+            return $cache_result;
+        } else {
+            $db = $this->dbConnectForIndex();
+            $conn = $db->connect();
+            if ($conn) {
+                $bloglatestlist = $db->selectAll($conn, $sql);
+                if ($bloglatestlist) {
+                    $this->mc->setValue($blog_lists_key, $bloglatestlist);
+                    return $bloglatestlist;
+                } else {
+                    echo "没有数据...";
+                }
             }
+            $db->close($conn);
         }
-        $db->close($conn);
     }
 	//获取博文列表
 	public function getBowenList($page){
