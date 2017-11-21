@@ -8,7 +8,7 @@ if (!isset($_SESSION['username'])){
 <html>
 <head>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0" charset="UTF-8">
-	<title>博文列表</title>
+	<title>文章列表</title>
 	<link rel="stylesheet" type="text/css" href="css/admin.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>

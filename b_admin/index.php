@@ -28,10 +28,10 @@ if (@$_GET['action'] == 'logout'){
 <div class="left">
 	<ul>
 		<li>
-			<a class="a_list a_list1">博文相关</a>
+			<a class="a_list a_list1">文章相关</a>
 			<div class="menu_list" style="display:none;">
-				<a class="lista_first" href="b_bowenlist.php" target="iframe">博文列表</a>
-				<a href="b_addbowen.php" target="iframe">添加博文</a>
+				<a class="lista_first" href="b_bowenlist.php" target="iframe">文章列表</a>
+				<a href="b_addbowen.php" target="iframe">添加文章</a>
 			</div>
 		</li>
 		<li>
