@@ -35,7 +35,6 @@ if (@$_GET['action'] == 'logout'){
 			</div>
 		</li>
 		<li>
-		<li>
 			<a class="a_list a_list2">个人信息</a>
 			<div class="menu_list" style="display:none;">
 				<a class="lista_first" href="b_changeinfo.php" target="iframe">信息修改</a>
